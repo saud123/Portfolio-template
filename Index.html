@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Saud Ijaz — Junior AI Engineer</title>
+<meta name="description" content="Saud Ijaz — Junior AI Engineer building LLM systems, RAG pipelines and multi-agent workflows." />
+<meta name="theme-color" content="#0D0B09" />
+
+<script>
+  /* Keep the saved theme applied before styles paint to prevent a flash. */
+  (function(){
+    try{
+      var t = localStorage.getItem('theme');
+      if (t === 'light' || t === 'dark') {
+        document.documentElement.setAttribute('data-theme', t);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', t === 'light' ? '#F5F0E6' : '#0D0B09');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }catch(e){ document.documentElement.setAttribute('data-theme', 'dark'); }
+  })();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- FILM LAYERS -->
+<div class="film-vignette"></div>
+<div class="film-grain"></div>
+<div class="film-scan"></div>
+<div class="frame frame-top"></div>
+<div class="frame frame-bottom"></div>
+
+<!-- PORTAL -->
+<div id="portal" aria-hidden="true">
+  <div class="portal-card">
+    <button class="portal-close" aria-label="Close">×</button>
+    <div id="portalContent"></div>
+  </div>
+</div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-mark"><span>SAUD</span><span>IJAZ</span></div>
+  <div class="loader-bar"><i id="loadBar"></i></div>
+  <div class="loader-pct"><span id="loadPct">0</span>%</div>
+</div>
+
+<!-- CHROME -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div id="progress"></div>
+
+<div class="vprogress" aria-hidden="true">
+  <div class="vprogress-fill" id="vprogressFill"></div>
+  <div class="vprogress-dot" id="vprogressDot"></div>
+</div>
+
+<div class="reel-chrome left">
+  <span class="reel-dot"></span>
+  <span>REEL <b id="timecode">00:00:00:00</b></span>
+</div>
+<div class="reel-chrome right">
+  <span>SCENE <b id="sceneLabel">01</b> · <b id="sceneName">HERO</b></span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#hero" class="brand" data-warp><span class="mark">SI</span> Saud<span class="dot">.</span></a>
+    <div class="nav-links">
+      <a href="#about" data-nav data-warp>About</a>
+      <a href="#skills" data-nav data-warp>Skills</a>
+      <a href="#process" data-nav data-warp>Process</a>
+      <a href="#projects" data-nav data-warp>Projects</a>
+      <a href="#experience" data-nav data-warp>Experience</a>
+      <a href="#certifications" data-nav data-warp>Certs</a>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a href="#contact" class="nav-cta magnetic" data-warp>Contact <span>↗</span></a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="hero" data-scene="HERO">
+  <div class="hero-bg" id="heroBg">
+    <div class="grid-bg"></div>
+    <canvas id="net"></canvas>
+    <div class="light-copper"></div>
+    <div class="light-teal"></div>
+  </div>
+
+  <div class="wrap hero-inner">
+    <div class="hero-copy" id="heroCopy">
+      <div class="badge reveal"><span class="dot"></span> Open to AI engineering roles</div>
+
+      <h1 class="hero-name" data-split>Saud Ijaz</h1>
+
+      <div class="hero-role reveal" data-delay="90">
+        <span class="mono">AI Engineer</span>
+        <span class="sep"></span>
+        <span class="mono" style="color:var(--muted)">Peshawar, PK</span>
+      </div>
+
+      <p class="hero-tag reveal" data-delay="150">
+        I build AI systems that
+        <span class="typed-wrap"><span class="typed" id="typed"></span><span class="caret"></span></span>
+      </p>
+
+      <p class="hero-sub reveal" data-delay="210">
+        Data Science graduate architecting end-to-end LLM applications,
+        multi-agent workflows and RAG pipelines — turning prototypes into reliable,
+        evaluated products with FastAPI, vector databases and rigorous testing.
+      </p>
+
+      <div class="hero-actions reveal" data-delay="270">
+        <a href="#contact" class="btn btn-primary magnetic" data-warp>Let's talk <span>→</span></a>
+        <a href="https://github.com/saud123" target="_blank" rel="noopener" class="btn btn-ghost magnetic">GitHub</a>
+        <a href="mailto:saud20607@gmail.com" class="btn btn-ghost magnetic">Email</a>
+      </div>
+
+      <div class="hero-stats reveal" data-delay="330">
+        <div><b><span data-count="3">0</span></b><span>AI products</span></div>
+        <div><b><i>$</i><span data-count="240">0</span>K</b><span>Saved / year</span></div>
+        <div><b><span data-count="73">0</span>%</b><span>Churn recall</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual" id="heroVisual">
+      <div class="portrait-frame">
+        <div class="portrait" data-tilt>
+          <img src="profile.jpg" alt="Portrait of Saud Ijaz"
+               onerror="this.style.display='none'">
+          <div class="portrait-fallback">SI</div>
+          <div class="portrait-tag"><i></i> AI ENGINEER</div>
+        </div>
+      </div>
+
+      <div class="hero-cap" aria-label="AI engineering capabilities">
+        <article class="hero-cap-card" tabindex="0">
+          <span class="hero-cap-eyebrow">LLM</span>
+          <strong class="hero-cap-title">Retrieval &amp; reasoning</strong>
+          <span class="hero-cap-tags"><span>RAG</span><span>Prompt engineering</span><span>Gemini 2.0</span><span>Pinecone</span><span>Evaluation harnesses</span></span>
+        </article>
+        <article class="hero-cap-card" tabindex="0">
+          <span class="hero-cap-eyebrow">AI Agent</span>
+          <strong class="hero-cap-title">Multi-agent orchestration</strong>
+          <span class="hero-cap-tags"><span>LangGraph</span><span>Tool calling</span><span>OpenRouter</span><span>Task planning</span><span>Orchestration</span></span>
+        </article>
+        <article class="hero-cap-card" tabindex="0">
+          <span class="hero-cap-eyebrow">Python</span>
+          <strong class="hero-cap-title">Backend &amp; APIs</strong>
+          <span class="hero-cap-tags"><span>FastAPI</span><span>REST APIs</span><span>Async Python</span><span>SQL</span><span>Docker</span></span>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint"><span class="mono">Scroll</span><i></i></div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement cine-section" id="statement">
+  <div class="wrap">
+    <div class="statement-wrap" id="statementText">
+      An <b>AI Engineer</b> focused on turning experimental AI into reliable, practical software. My work centers on building LLM applications with Gemini and OpenRouter, alongside Retrieval-Augmented Generation (RAG) pipelines using embeddings and vector databases. I also design multi-agent workflows for autonomous task execution, code scalable AI REST APIs with Python and FastAPI, and develop predictive, explainable machine learning models to solve real-world problems.
+
+    </div>
+    <cite class="statement-cite">Design principle — layered depth</cite>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec-pad cine-section" id="about" data-scene="ABOUT">
+  <div class="wrap">
+    <div class="eyebrow reveal">01 — About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="sec-title reveal" data-split>From data science to <span class="accent">AI engineering.</span></h2>
+
+        <p class="lead reveal" data-delay="90">
+          I started with statistics and machine learning — cleaning messy datasets, tuning
+          models, chasing recall scores. Then I found the part I actually love: making AI
+          systems that <strong>survive contact with production</strong>.
+        </p>
+        <p class="lead reveal" data-delay="150" style="margin-top:16px">
+          Today I build end-to-end LLM applications — retrieval pipelines that fetch the right
+          context, agent loops that call real tools, guardrails that stop bad answers, and
+          evaluation harnesses that prove the thing works.
+        </p>
+
+      </div>
+
+      <div class="reveal" data-delay="150">
+        <div class="mono" style="color:var(--accent);margin-bottom:16px">The journey</div>
+        <div class="journey">
+          <div class="journey-item">
+            <time>2023 — 2024</time>
+            <h4>BS Data Science · IMSciences</h4>
+            <p>Machine learning, EDA and statistics — the foundations that made everything else click.</p>
+          </div>
+          <div class="journey-item">
+            <time>Aug — Sep 2026</time>
+            <h4>Data Science Intern · SafeX Solutions</h4>
+            <p>Churn prediction at 73% recall, a credit-risk model, and $240K in identified annual savings.</p>
+          </div>
+          <div class="journey-item">
+            <time>Present</time>
+            <h4>AI Engineer · Coroven AI</h4>
+            <p>RAG pipelines, multi-agent orchestration, tool calling and LLM evaluation for real business cases.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="sec-pad cine-section" id="skills" data-scene="SKILLS" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="eyebrow reveal">02 — Capabilities</div>
+    <h2 class="sec-title reveal" data-split>What I work <span class="accent">with.</span></h2>
+
+    <div class="skill-list">
+      <div class="skill-row" data-skill>
+        <h3><span class="idx">01</span> AI &amp; LLM Engineering</h3>
+        <div class="tags">
+          <span class="tag">RAG</span><span class="tag">Prompt Engineering</span>
+          <span class="tag">Multi-Agent Orchestration</span><span class="tag">Tool / Function Calling</span>
+          <span class="tag">Pinecone</span><span class="tag">Weaviate</span><span class="tag">pgvector</span>
+          <span class="tag">Embeddings</span><span class="tag">LLM Evaluation</span><span class="tag">OpenRouter</span>
+        </div>
+      </div>
+
+      <div class="skill-row" data-skill>
+        <h3><span class="idx">02</span> Programming &amp; Backend</h3>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">FastAPI</span>
+          <span class="tag">REST APIs</span><span class="tag">PostgreSQL</span><span class="tag">SQLAlchemy</span>
+          <span class="tag">JavaScript</span><span class="tag">AI-Assisted Coding</span>
+        </div>
+      </div>
+
+      <div class="skill-row" data-skill>
+        <h3><span class="idx">03</span> ML, DL &amp; Data Science</h3>
+        <div class="tags">
+          <span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Deep Learning</span>
+          <span class="tag">Scikit-Learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+          <span class="tag">SHAP</span><span class="tag">Streamlit</span>
+        </div>
+      </div>
+
+      <div class="skill-row" data-skill>
+        <h3><span class="idx">04</span> Deployment &amp; Tools</h3>
+        <div class="tags">
+          <span class="tag">Git</span><span class="tag">Docker</span><span class="tag">VS Code</span>
+          <span class="tag">Playwright</span><span class="tag">PyMuPDF</span><span class="tag">Streamlit</span>
+          <span class="tag">LangChain</span><span class="tag">Hugging Face</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW I SOLVE AI PROBLEMS -->
+<section class="solve-flow-section sec-pad cine-section" id="process" data-scene="PROCESS">
+  <div class="wrap">
+    <div class="eyebrow reveal">03 — Process</div>
+    <h2 class="sec-title reveal" data-split>How I solve <span class="accent">AI problems.</span></h2>
+
+    <div class="solve-flow-shell reveal is-paused" data-delay="100">
+      <div class="solve-flow" role="list" aria-label="AI problem-solving process">
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">01</span></span>
+          <span class="solve-step-title">Identify the Problem</span>
+          <span class="solve-step-desc">Clarify goals, ROI, and whether AI is needed.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">02</span></span>
+          <span class="solve-step-title">Research</span>
+          <span class="solve-step-desc">Audit constraints, prior solutions, and available data.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">03</span></span>
+          <span class="solve-step-title">Plan</span>
+          <span class="solve-step-desc">Set success metrics, latency, cost, and fallbacks.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">04</span></span>
+          <span class="solve-step-title">Choose Approach</span>
+          <span class="solve-step-desc">Select the simplest fit: ML, DL, RAG, or hybrid.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">05</span></span>
+          <span class="solve-step-title">Prepare Data</span>
+          <span class="solve-step-desc">Collect, clean, label or chunk, and split safely.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">06</span></span>
+          <span class="solve-step-title">Build &amp; Test</span>
+          <span class="solve-step-desc">Baseline quickly, then benchmark candidate models.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">07</span></span>
+          <span class="solve-step-title">Evaluate Results</span>
+          <span class="solve-step-desc">Measure metrics, edge cases, and failure buckets.</span>
+        </button>
+        <button class="solve-step" type="button" role="listitem" aria-expanded="false">
+          <span class="solve-node"><span class="solve-step-num">08</span></span>
+          <span class="solve-step-title">Iterate &amp; Deploy</span>
+          <span class="solve-step-desc">Fix weak spots, deploy safely, and monitor feedback.</span>
+        </button>
+      </div>
+
+      <div class="solve-feedback" aria-hidden="true">
+        <svg viewBox="0 0 800 38" preserveAspectRatio="none"><path d="M800 4 C720 34 170 34 18 10"/></svg>
+        <span class="solve-feedback-label">Live feedback loop</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects" data-scene="PROJECTS" style="height:340vh">
+  <div class="corridor">
+    <div class="corridor-head wrap">
+      <div>
+        <div class="eyebrow">04 — Selected work</div>
+        <h2>Things I've <span class="accent">shipped</span></h2>
+      </div>
+      <div class="corridor-meter">
+        <span id="hCount">01 / 03</span>
+        <div class="bar"><i id="hBar"></i></div>
+      </div>
+    </div>
+
+    <div class="cards-3d" id="cards3d">
+
+      <div class="panel panel-intro">
+        <h3>Three builds.<br>Three lessons.</h3>
+        <p>Scroll to fly through the corridor.</p>
+        <div class="hint">
+          <span>SCROLL · CLICK</span>
+          <svg width="24" height="11" viewBox="0 0 24 11" fill="none" aria-hidden="true">
+            <path d="M0 5.5h22M17.5 1l4.5 4.5-4.5 4.5" stroke="currentColor" stroke-width="1.3"/>
+          </svg>
+        </div>
+      </div>
+
+      <article class="panel" data-project>
+        <div class="panel-num">PROJECT 01</div>
+        <h3>Full-Stack AI Dental Clinic &amp; Voice Receptionist</h3>
+
+        <div class="glyph glyph-chat" aria-hidden="true">
+          <span>Book me a cleaning</span>
+          <span>Tue 10:30 confirmed ✓</span>
+        </div>
+
+        <div class="pills">
+          <span class="pill">FastAPI</span><span class="pill">Next.js</span>
+          <span class="pill">Gemini 2.0 Flash</span><span class="pill">PostgreSQL</span><span class="pill">pgvector</span>
+        </div>
+        <p><strong>Problem —</strong> Clinics lose hours to phone scheduling, and generic chatbots can't touch patient records safely.</p>
+        <p><strong>Built —</strong> A FastAPI backend wiring Gemini 2.0 Flash for multi-turn clinical reasoning with custom tools (book / cancel / reschedule) over secure REST endpoints. A multilingual voice pipeline (FFmpeg STT → Gemini → ElevenLabs / gTTS) and a RAG memory system on pgvector retrieve history and summarise closed sessions.</p>
+        <p><strong>Safety —</strong> A two-layer guardrail (classifier + prompt rules) blocks non-clinical queries and prevents unauthorized diagnosis.</p>
+        <div class="learn"><b>Learning →</b> Guardrails are a product feature, not a patch. Edge-case evaluation mattered more than the happy path.</div>
+      </article>
+
+      <article class="panel" data-project>
+        <div class="panel-num">PROJECT 02</div>
+        <h3>Multi-Agent Financial Intelligence — PSX</h3>
+
+        <div class="glyph" aria-hidden="true">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <span class="bar"></span><span class="bar"></span>
+        </div>
+
+        <div class="pills">
+          <span class="pill">Python</span><span class="pill">FastAPI</span>
+          <span class="pill">PostgreSQL</span><span class="pill">Pinecone</span><span class="pill">Gemini</span>
+        </div>
+        <p><strong>Problem —</strong> Retail investors get scattered data and confident-sounding noise instead of grounded analysis.</p>
+        <p><strong>Built —</strong> A supervisor agent routing to five specialists (market data, sentiment, risk, macro, RAG) in parallel. A document pipeline (Playwright → PyMuPDF OCR → Sentence-Transformers → Pinecone) indexes quarterly reports for retrieval.</p>
+        <p><strong>Reliability —</strong> Three-provider fallback (Gemini → Groq → OpenRouter) with retries and rate limiting, served over FastAPI with SSE streaming to a vanilla JS frontend.</p>
+        <div class="learn"><b>Learning →</b> A lookahead-safe backtest proved deterministic math — not LLM confidence — should drive the decision.</div>
+      </article>
+
+      <article class="panel" data-project>
+        <div class="panel-num">PROJECT 03</div>
+        <h3>Explainable Loan Default Prediction &amp; Risk Dashboard</h3>
+
+        <div class="glyph glyph-risk" aria-hidden="true">
+          <i style="--v:.8"></i><i style="--v:.55"></i><i style="--v:.7"></i>
+        </div>
+
+        <div class="pills">
+          <span class="pill">Python</span><span class="pill">Scikit-Learn</span>
+          <span class="pill">SHAP</span><span class="pill">Streamlit</span>
+        </div>
+        <p><strong>Problem —</strong> A black-box default model is useless to a risk team that must justify every rejection.</p>
+        <p><strong>Built —</strong> An end-to-end pipeline over 32K+ loan records — cleaning, imputation, feature engineering — landing on a Gradient Boosting model at <strong class="hl">93.4% accuracy</strong> and <strong class="hl">0.946 AUC-ROC</strong>.</p>
+        <p><strong>Explainability —</strong> SHAP values surfaced the top drivers (loan-to-income ratio, prior defaults) inside a Streamlit dashboard for real-time scoring and risk-based pricing.</p>
+        <div class="learn"><b>Learning →</b> Accuracy sells the model; interpretability gets it deployed.</div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="sec-pad cine-section" id="experience" data-scene="EXPERIENCE">
+  <div class="wrap">
+    <div class="eyebrow reveal">05 — Experience</div>
+    <h2 class="sec-title reveal" data-split>Where I've <span class="accent">worked.</span></h2>
+
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <h3>AI Engineer</h3>
+          <span class="co">Coroven AI</span>
+          <span class="when">Present</span>
+        </div>
+        <div class="mono" style="color:var(--silver);margin-bottom:4px">Peshawar, Pakistan</div>
+        <ul>
+          <li><strong>Integrated LLM APIs —</strong> built and tested features on Google Gemini and OpenRouter using prompt engineering, tool calling and structured outputs for internal business use cases.</li>
+          <li><strong>Developed RAG pipelines —</strong> engineered and debugged retrieval workflows from scratch, optimising embedding models, vector indexing (Pinecone, Weaviate) and chunking to lift retrieval accuracy.</li>
+          <li><strong>Prototyped agent workflows —</strong> designed multi-agent orchestration and function-calling logic with evaluation scripts to benchmark accuracy and cut hallucinations.</li>
+          <li><strong>Raised code quality —</strong> code reviews, debugging and documentation, connecting models to RESTful services via LangChain and Hugging Face.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item reveal" data-delay="90">
+        <div class="tl-head">
+          <h3>Remote Data Scientist Intern</h3>
+          <span class="co">SafeX Solutions</span>
+          <span class="when">Aug – Sep 2026</span>
+        </div>
+        <div class="mono" style="color:var(--silver);margin-bottom:4px">Remote</div>
+        <ul>
+          <li><strong>Data preparation &amp; EDA —</strong> cleaned and transformed raw customer data with Pandas, NumPy and SQL to surface key churn drivers before modelling.</li>
+          <li><strong>Modelling —</strong> trained and compared Logistic Regression and XGBoost classifiers, reaching <strong>73% recall</strong> on the minority class through hyperparameter tuning.</li>
+          <li><strong>Business impact —</strong> translated insights into retention strategy, identifying drivers that saved <strong>$240K annually (381% ROI)</strong>.</li>
+          <li><strong>Credit risk model —</strong> independently designed and presented a production-ready scoring model covering feature engineering, validation and stakeholder communication.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section class="sec-pad cine-section" id="certifications" data-scene="CERTS" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="eyebrow reveal">06 — Validation</div>
+    <h2 class="sec-title reveal" data-split>Certifications &amp; <span class="accent">leadership.</span></h2>
+
+    <div class="cert-list">
+      <div class="cert-row reveal" data-delay="40">
+        <div>
+          <h4>Google Data Analytics Professional Certificate</h4>
+          <p>End-to-end analytics: data cleaning, SQL, visualisation and stakeholder-ready reporting.</p>
+        </div>
+        <span class="yr">CERT</span>
+      </div>
+      <div class="cert-row reveal" data-delay="80">
+        <div>
+          <h4>Prompt Engineering Certification</h4>
+          <p>Structured prompting, tool calling and evaluation patterns for production LLM systems.</p>
+        </div>
+        <span class="yr">CERT</span>
+      </div>
+      <div class="cert-row reveal" data-delay="120">
+        <div>
+          <h4>PR Team — GDSC IMSciences</h4>
+          <p>Managed event promotions and coordinated technical workshops for a 200+ member student tech community.</p>
+        </div>
+        <span class="yr">2023 – 24</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact cine-section" id="contact" data-scene="CONTACT">
+  <div class="wrap">
+    <div class="eyebrow reveal">07 — Contact</div>
+    <h2 class="sec-title reveal" data-split>Let's build something <span class="accent">intelligent</span> together.</h2>
+
+    <div class="contact-grid">
+      <div class="reveal" data-delay="70">
+        <p class="lead">
+          Open to AI engineering roles, LLM/RAG builds and research collaborations.
+          Tell me what you're working on — I usually reply within a day.
+        </p>
+
+        <div class="contact-links">
+          <a class="clink" href="mailto:saud20607@gmail.com">
+            <span class="k">Email</span>
+            <span class="v">saud20607@gmail.com</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="clink" href="https://github.com/saud123" target="_blank" rel="noopener">
+            <span class="k">GitHub</span>
+            <span class="v">github.com/saud123</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a class="clink" href="tel:+923109757168">
+            <span class="k">Phone</span>
+            <span class="v">0310 9757168</span>
+            <span class="arrow">↗</span>
+          </a>
+          <div class="clink" style="cursor:default">
+            <span class="k">Based in</span>
+            <span class="v">Peshawar, Pakistan</span>
+            <span class="arrow">◎</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <div class="foot">
+        <span>© <span id="year">2026</span> Saud Ijaz — AI Engineer</span>
+        <span>Scene 06 · End of reel</span>
+        <a href="#hero" class="to-top" data-warp>Back to top ↑</a>
+      </div>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<script src="index.js"></script>
+</body>
+</html>
